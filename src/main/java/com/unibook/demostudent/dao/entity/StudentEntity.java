@@ -1,6 +1,7 @@
 package com.unibook.demostudent.dao.entity;
 
 
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
+@Data
 public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
