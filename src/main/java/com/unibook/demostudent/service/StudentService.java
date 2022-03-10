@@ -19,8 +19,7 @@ public class StudentService {
     private final StudentRepository studentRepository;
 
     public StudentResponseDto getStudent(Long id) {
-        StudentEntity student = studentRepository.findById(id).orElseThrow(()
-                -> new NotFoundException("Student not found!"));
+        StudentEntity student = findStudentIfExists(id);
         return entityToDto(student);
     }
 
@@ -34,18 +33,20 @@ public class StudentService {
     }
 
     public void updateStudent(Long id, StudentRequestDto studentRequestDto) {
-        StudentEntity student = studentRepository.findById(id).orElseThrow(()
-                -> new NotFoundException("Student not found!"));
+        StudentEntity student = findStudentIfExists(id);
         student.setName(studentRequestDto.getName());
         student.setEmail(studentRequestDto.getEmail());
         studentRepository.save(student);
     }
 
     public void deleteStudent(Long id) {
-        StudentEntity student = studentRepository.findById(id).orElseThrow(()
-                -> new NotFoundException("Student not found!"));
+        StudentEntity student = findStudentIfExists(id);
         studentRepository.delete(student);
     }
 
+    private StudentEntity findStudentIfExists(Long id) {
+        return studentRepository.findById(id).orElseThrow(()
+                -> new NotFoundException("Student not found!"));
+    }
 
 }
