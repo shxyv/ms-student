@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.6.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'groovy'
 }
 
 group = 'com.unibook'
@@ -26,6 +27,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'io.github.benas:random-beans:3.9.0'
+    testImplementation 'org.codehaus.groovy:groovy-all:3.0.7'
+    testImplementation 'org.spockframework:spock-core:2.0-M3-groovy-3.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
